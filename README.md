@@ -1,2 +1,2 @@
-# It-s-mAIGo-
+# It's mAIgo!!!!!
 Classifier for mygo!!!!! meme
