@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>聊天機器人回覆</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 30px; background-color: #f7f7f7; }
+        .container { max-width: 600px; margin: auto; background: white; padding: 20px; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+        input[type=text] { width: 100%; padding: 10px; margin-bottom: 10px; font-size: 16px; }
+        button { padding: 10px 20px; font-size: 16px; background-color: #007bff; color: white; border: none; border-radius: 5px; cursor: pointer; }
+        button:hover { background-color: #0056b3; }
+        .response-list { margin-top: 20px; padding: 10px; background-color: #eef; border-radius: 5px; }
+        .response-item { margin-bottom: 8px; padding: 8px; background-color: #fff; border: 1px solid #ccc; border-radius: 5px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>🤖 聊天機器人小助手</h2>
+        <form method="post" action="/reply">
+            <label><strong>請輸入一句話：</strong></label>
+            <input type="text" name="message" placeholder="例如：我好累怎麼辦" required>
+            <button type="submit">送出</button>
+        </form>
+
+        {% if user_input %}
+        <div class="response-list">
+            <strong>你說：</strong> {{ user_input }}<br><br>
+            <strong>模型建議回覆（Top 5）：</strong>
+            <ul>
+                {% for reply in response_list %}
+                <li class="response-item">{{ reply }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
